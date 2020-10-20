@@ -1,13 +1,14 @@
 // Responsible for playing a single video and displaying information about it
-var VideoPlayer = (props) => (
+var VideoPlayer = ({ video }) => (
 
   <div className="video-player">
+    {console.log({video})}
     <div className="embed-responsive embed-responsive-16by9">
-      <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/${props.video.id.videoId}`} allowFullScreen></iframe>
+      <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/${video.id.videoId}`} allowFullScreen></iframe>
     </div>
     <div className="video-player-details">
-      <h3>{props.video.snippet.title}</h3>
-      <div>{props.video.snippet.description}</div>
+      <h3>{video.snippet.title}</h3>
+      <div>{video.snippet.description}</div>
     </div>
   </div>
 

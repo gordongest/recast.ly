@@ -11,11 +11,15 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      videoList: exampleVideoData,
+      videoList: [],
       currentVideo: exampleVideoData[0]
     };
 
     this.onVideoListClick = this.onVideoListClick.bind(this);
+  }
+
+  componentDidMount() {
+    this.getVideos('good doggo');
   }
 
   getVideos(query) {
@@ -24,8 +28,13 @@ class App extends React.Component {
       query: query
     };
 
-
-
+    this.props.searchYouTube(options, (videos) => {
+      console.log(videos);
+      this.setState({
+        videoList: videos,
+        currentVideo: videos[0]
+      });
+    });
   }
 
   onVideoListClick(video) {
@@ -39,9 +48,10 @@ class App extends React.Component {
     return (
 
       <div>
+        {console.log(this.props)}
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search />
+            <Search handleSearchInputChange={this.getVideos.bind(this)}/>
           </div>
         </nav>
         <div className="row">
@@ -49,7 +59,7 @@ class App extends React.Component {
             <VideoPlayer video={this.state.currentVideo} />
           </div>
           <div className="col-md-5">
-            <VideoList onVideoListClick={this.onVideoListClick} videos={this.state.videoList}/>
+            <VideoList onVideoListClick={this.onVideoListClick} videos={this.state.videoList} />
           </div>
         </div>
       </div>

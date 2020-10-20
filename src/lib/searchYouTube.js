@@ -1,7 +1,6 @@
 // import YOUTUBE_API_KEY from './lib/youtube.js';
 
 var searchYouTube = ({ key, query, max = 5 }, callback) => {
-  // console.log('A:', options, 'B:',callback)
   //options is an object -> query: string to search for, max: the maximum number of videos to get, which should default to 5, key: an authorized YouTube Browser API key
   $.get('https://www.googleapis.com/youtube/v3/search', {
     part: 'snippet',
@@ -11,16 +10,8 @@ var searchYouTube = ({ key, query, max = 5 }, callback) => {
     type: 'video',
     videoEmbeddable: 'true'
   })
-    .done(({ items }) => {
-      if (callback) {
-        callback(items);
-      }
-    })
-    .fail(({ responseJSON }) => {
-      responseJSON.error.errors.forEach((err) => console.error(err));
-    });
-  // .done(data => callback(data.items))
-  // .fail(err => console.log('GET failed', err));
+    .done(data => callback(data.items))
+    .fail(err => console.log('GET failed', err));
 };
 
 // componentDidMount: function () {

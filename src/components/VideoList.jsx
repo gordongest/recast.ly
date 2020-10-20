@@ -2,14 +2,16 @@ import VideoListEntry from './VideoListEntry.js';
 
 // A container component responsible for populating video list entry components
 
-var VideoList = (props) => (
+var VideoList = ({ videos, onVideoListClick }) => (
 
   <div className="video-list">
-    {props.videos.map(video => (
-      <VideoListEntry onVideoListClick={props.onVideoListClick} video={video} />
-    ))}
+    {videos.map(video => (
+      <VideoListEntry
+        onVideoListClick={onVideoListClick}
+        video={video}
+      />)
+    )}
   </div>
-
 );
 
 // PropTypes tell other developers what `props` a component expects
