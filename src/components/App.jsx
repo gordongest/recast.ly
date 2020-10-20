@@ -1,5 +1,10 @@
-var App = () => (
+import VideoList from './VideoList.js';
+
+// The top level container for the entire application. This is the component that will be rendered to the DOM
+var App = (props) => (
+
   <div>
+  {console.log('props', props)}
     <nav className="navbar">
       <div className="col-md-6 offset-md-3">
         <div><h5><em>search</em> view goes here</h5></div>
@@ -10,11 +15,13 @@ var App = () => (
         <div><h5><em>videoPlayer</em> view goes here</h5></div>
       </div>
       <div className="col-md-5">
-        <div><h5><em>videoList</em> view goes here</h5></div>
+        <div><h5><em>videoList</em><VideoList videos={props.videos}/></h5></div>
       </div>
     </div>
   </div>
+
 );
+
 
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
