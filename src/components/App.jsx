@@ -1,5 +1,6 @@
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
+import Search from './Search.js';
 import exampleVideoData from '../data/exampleVideoData.js';
 
 // The top level container for the entire application. This is the component that will be rendered to the DOM
@@ -30,7 +31,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em>search</em> view goes here</h5></div>
+            <Search />
           </div>
         </nav>
         <div className="row">
