@@ -15,11 +15,10 @@ class App extends React.Component {
       currentVideo: exampleVideoData[0]
     };
 
-    this.onVideoListClick = this.onVideoListClick.bind(this);
   }
 
   componentDidMount() {
-    this.getVideos('good doggo');
+    this.getVideos('bootstrap tutorial');
   }
 
   getVideos(query) {
@@ -48,7 +47,6 @@ class App extends React.Component {
     return (
 
       <div>
-        {console.log(this.props)}
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
             <Search handleSearchInputChange={this.getVideos.bind(this)}/>
@@ -59,7 +57,7 @@ class App extends React.Component {
             <VideoPlayer video={this.state.currentVideo} />
           </div>
           <div className="col-md-5">
-            <VideoList onVideoListClick={this.onVideoListClick} videos={this.state.videoList} />
+            <VideoList onVideoListClick={this.onVideoListClick.bind(this)} videos={this.state.videoList} />
           </div>
         </div>
       </div>

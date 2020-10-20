@@ -5,7 +5,7 @@ var Search = ({ handleSearchInputChange }) => (
     <input
       className="form-control"
       type="text"
-      onChange={(event) => this.props.handleSearchInputChange(event.target.value)}
+      onChange={(event) => handleSearchInputChange(event.target.value)}
     />
     <button className="btn hidden-sm-down" type="submit">
       <span className="glyphicon glyphicon-search"></span>
