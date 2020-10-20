@@ -7,8 +7,8 @@ import exampleVideoData from '../data/exampleVideoData.js';
 
 class App extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       videoList: exampleVideoData,
@@ -16,6 +16,16 @@ class App extends React.Component {
     };
 
     this.onVideoListClick = this.onVideoListClick.bind(this);
+  }
+
+  getVideos(query) {
+    var options = {
+      key: this.props.API_KEY,
+      query: query
+    };
+
+
+
   }
 
   onVideoListClick(video) {
