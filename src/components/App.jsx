@@ -22,14 +22,13 @@ class App extends React.Component {
   }
 
   getVideos(query) {
-    console.log('props:', this.props);
+
     var options = {
       key: this.props.API_KEY,
       query: query
     };
 
     this.props.searchYouTube(options, (videos) => {
-      // console.log(videos);
       this.setState({
         videoList: videos,
         currentVideo: videos[0]
