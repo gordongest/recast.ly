@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      videoList: [],
+      videoList: exampleVideoData,
       currentVideo: exampleVideoData[0]
     };
 
@@ -22,13 +22,14 @@ class App extends React.Component {
   }
 
   getVideos(query) {
+    console.log('props:', this.props);
     var options = {
       key: this.props.API_KEY,
       query: query
     };
 
     this.props.searchYouTube(options, (videos) => {
-      console.log(videos);
+      // console.log(videos);
       this.setState({
         videoList: videos,
         currentVideo: videos[0]
@@ -42,6 +43,16 @@ class App extends React.Component {
     });
   }
 
+  debounce(func, wait) {
+    let timer = null;
+    return function() {
+      clearTimeout(timer);
+      timer = setTimeout(function() {
+        func.apply(this, arguments);
+      }, wait);
+    };
+  }
+
   render() {
 
     return (
@@ -49,7 +60,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search handleSearchInputChange={this.getVideos.bind(this)}/>
+            <Search debounce={this.debounce} handleSearchInputChange={this.getVideos.bind(this)}/>
           </div>
         </nav>
         <div className="row">

@@ -1,11 +1,11 @@
 // Responsible for knowing and communicating information about the search input field
-var Search = ({ handleSearchInputChange }) => (
+var Search = ({debounce, handleSearchInputChange}) => (
 
   <div className="search-bar form-inline">
     <input
       className="form-control"
       type="text"
-      onChange={(event) => handleSearchInputChange(event.target.value)}
+      onChange={(event) => debounce(handleSearchInputChange(event.target.value), 500)}
     />
     <button className="btn hidden-sm-down" type="submit">
       <span className="glyphicon glyphicon-search"></span>

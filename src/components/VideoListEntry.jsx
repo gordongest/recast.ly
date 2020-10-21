@@ -1,5 +1,3 @@
-import App from './App.js';
-
 // A component that shows a thumbnail view for a single video. When the title of this video is clicked, that video will be played in the VideoPlayer component
 
 var VideoListEntry = ({ video, onVideoListClick }) => (
